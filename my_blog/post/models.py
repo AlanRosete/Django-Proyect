@@ -9,6 +9,7 @@ class Author(models.Model):
         return self.name
 
 class Entry(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     headline = models.CharField(max_length=255)
     body_text = models.TextField()
     public_date = models.DateField(default=date.today)    

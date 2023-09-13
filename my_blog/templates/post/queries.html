@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Filtrar a un usuario por su ID: {{author|length}}1 </h1>
+
+         <p> {{author.email}} </p>
+
+ 
+
+    <h1>Filtrar a este usuario: aking@example.net</h1>
+    
+    <ul>
+       {% for elm in filtered %}
+        <li>{{elm.name}} | {{elm.email}}</li>
+       {% endfor %}
+    </ul>
+
+    <h1>Lista De Autores</h1>
+    
+    <ul>
+        {% for author in authors %}
+        <li> {{author.name}} <br> ( {{author.email}} ) </li>
+        {% endfor %}
+    </ul>
+    <h3>
+        El total de Autores es: {{authors|length}}
+    <h3>
+</body>
+</html>
