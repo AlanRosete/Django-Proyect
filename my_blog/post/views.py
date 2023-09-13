@@ -28,6 +28,10 @@ def queries(request):
 
     orders = Author.objects.all().order_by("email") #Se realiza la ordenacion de los correos de forma alfabetica
 
+    #Obtener todos los elementos donde el ID sea menor o igual a 15
+
+    filtered = Author.objects.filter(id__lte=15)
+
 
     return render(request, "post/queries.html", {"authors": authors, "filtered": filtered, "author": author})
 # Create your views here.
