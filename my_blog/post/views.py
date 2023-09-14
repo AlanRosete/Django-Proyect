@@ -2,6 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Author, Entry
 
+
+def update(request):
+    author = Author.objects.get(id=1)
+    author.name = "Juanjo"
+    author.email = "juanjo@demo.com"
+    author.save()
+    return HttpResponse("Modificado")
+
 def queries(request):
     #Obtener todos los documentos 
     authors = Author.objects.all()
@@ -29,9 +37,21 @@ def queries(request):
     orders = Author.objects.all().order_by("email") #Se realiza la ordenacion de los correos de forma alfabetica
 
     #Obtener todos los elementos donde el ID sea menor o igual a 15
-
-    filtered = Author.objects.filter(id__lte=15)
+    #
+    filtered = Author.objects.filter(id__lte=15) #En este ejemplo se muestran los primeros 15 resultados
+    # VALORES DE EQUAL    
+    __lte = 20 #menor o igual que 
+    __gte = 20 #mayor o igual que
+    __lt = 20 #menor que 
+    __gt = 20 #mayor que
+    __countains = 20 #contiene
+    __exact = 20 #Valor exacto
+    # FIN
 
 
     return render(request, "post/queries.html", {"authors": authors, "filtered": filtered, "author": author})
-# Create your views here.
+
+    
+
+    
+    
