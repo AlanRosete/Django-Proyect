@@ -1,7 +1,10 @@
-from django.forms import ModelForm
-from .models import Todo
+from django.forms import ModelForm, DateInput
+from  .models import Todo
 
-class ContactForm(ModelForm):
+class TodoForm(ModelForm):
     class Meta:
         model = Todo
-        fields = "__all__"
+        exclude = ('date',)
+        widgets = {
+            'fecha_fin': DateInput(attrs={'type':'date'}),
+        }
